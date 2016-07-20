@@ -15,6 +15,9 @@ end
 
 
 get '/' do
-	@barbers = Barber.all
+# => сортировка списка в обратном порядке
+	@barbers = Barber.order "created_at DESC"
+# => вывести весь список по порядку
+#	@barbers = Barber.all
 	erb :index
 end
