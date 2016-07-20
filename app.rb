@@ -24,7 +24,6 @@ get '/' do
 	erb :index
 end
 
-
 # => ------------------------------
 get '/visit' do
 	erb :visit
