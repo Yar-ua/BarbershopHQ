@@ -8,7 +8,7 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:barbershop.db"
 
 class Client < ActiveRecord::Base
-	validates :name, presence: true 		#presence: => true равнозначно presence: true? это хэш
+	validates :name, presence: true 		# presence: true это хэш
 	validates :phone, presence: true 		
 	validates :date_stamp, presence: true
 	validates :color, presence: true
@@ -52,7 +52,10 @@ post '/visit' do
 #--------------------------------
 
 	c = Client.new params[:client]
-	c.save
-	
-	erb "<h3>Спасибо, Вы записались</h3>"
+	if c.save
+		erb "<h3>Спасибо, Вы записались</h3>"
+	else
+		@error = c.errors.full_messages.first
+		erb :visit
+	end
 end
