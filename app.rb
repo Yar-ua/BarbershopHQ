@@ -8,6 +8,11 @@ require 'sinatra/activerecord'
 set :database, "SQLite3:barbershop.db"
 
 class Client < ActiveRecord::Base
+	validates :name, presence: true 		#presence: => true равнозначно presence: true? это хэш
+	validates :phone, presence: true 		
+	validates :date_stamp, presence: true
+	validates :color, presence: true
+	validates :name, presence: true
 end
 
 class Barber < ActiveRecord::Base
